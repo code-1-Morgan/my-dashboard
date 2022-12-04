@@ -1,0 +1,113 @@
+<%- include('partials/header') -%>
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-6">
+        <div>
+            <p><strong>User Name</strong>: <%= user.userName %></p>
+            <!-- <a href="/logout" class="col-3 btn btn-primary">Logout</a> -->
+        </div>
+        <!-- <div class="mt-5">
+          <h2>Add a post</h2>
+          <form action="/post/createPost" enctype="multipart/form-data" method="POST">
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control" id="title" name="title">
+            </div>
+            <div class="mb-3">
+              <label for="caption" class="form-label">Caption</label>
+              <textarea class="form-control" id="caption" name="caption"></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="imgUpload" class="form-label">Image</label>
+              <input type="file" class="form-control" id="imageUpload" name="file">
+            </div>
+            <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
+          </form>
+        </div> -->
+    </div>
+    <div class="col-6 text-end">
+      <a href="/logout" class="col-3 btn btn-primary">Logout</a>
+    </div>
+    <!-- <div class="col-6">
+      <ul class="row list-unstyled">
+      <% for(var i=0; i<posts.length; i++) {%>
+        <li class="col-6 justify-content-between mt-5">
+          <a href="/post/<%= posts[i]._id%>">
+            <img class="img-fluid" src="<%= posts[i].image%>">
+          </a>
+        </li>
+      <% } %>
+      </ul>
+    </div>   -->
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <h2>Sticky notes</h2>
+      <div class="row">
+        <ul class="row list-unstyled">
+          <% for(var i=0; i<posts.length; i++) {%>
+            <li class="m-1 p-1 row stickyLi">
+              <div class='post-it text-center row align-items-center' contenteditable>
+                <h6 class="fs-4 postitTitle"><%= posts[i].caption %></h6>
+                <div>
+                  <p class="fs-6"><%= posts[i].createdAt.toDateString() %></p>
+                  <form
+                  action="/post/deletePost/<%= posts[i].id %>?_method=DELETE"
+                  method="POST"
+                >
+                  <button class="bi bi-trash fs-6" type="submit"> Delete note</button>
+                <div>
+              </form>
+              </div>
+            </li>
+          <% } %>
+        </ul>
+      </div>
+      
+      <h4 class="stickyBtn">Add a sticky note</h4>
+      <div class="row">
+        <form action="/post/createPost" enctype="multipart/form-data" method="POST">
+          <div class="mb-3">
+            <!-- <label for="caption" class="form-label">Caption</label> -->
+            <textarea class="form-control" id="caption" name="caption"></textarea>
+          </div>
+          <!-- <div class="mb-3">
+            <label for="imgUpload" class="form-label">Image</label>
+            <input type="file" class="form-control" id="imageUpload" name="file">
+          </div> -->
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+    <div class="col-5">
+      <h3>Today's Schedule</h3>
+      <div class="row">
+        <h5>Add event</h5>
+        <form action="/schedule/createSchedule" method="POST">
+          <input type="text" name="event" placeholder="Event name">
+          <input type="time" name="time">
+          <input type="date" name="date">
+          <button class="btn btn-primary" type="submit">Add</button>
+        </form>
+      <!-- display schedule -->
+        <ul class="row list-unstyled">
+          <%_ if(typeof schedules !== "undefined"){ _%>
+            <% for(let i=0; i < schedules.length; i++) {%>
+              <li class="col-6 justify-content-between mt-5">
+                <%= schedules[i].time %> <%= schedules[i].event%>
+              </li>
+            <% } %>
+          <%_ } _%>
+        </ul> 
+      </div>  
+    <div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <Calendar />
+      <iframe src="https://calendar.google.com/calendar/embed?src=morganodowning%40gmail.com&ctz=America%2FNew_York" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/footer') -%>

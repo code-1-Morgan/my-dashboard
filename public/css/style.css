@@ -1,0 +1,25 @@
+@import url(https://fonts.googleapis.com/css?family=Permanent+Marker);
+
+* {
+	box-sizing:border-box;
+}
+
+.post-it {
+    background:#ffa;
+    aspect-ratio: 1 / 1;
+    border: 2px solid black;
+}
+
+.postitTitle{
+    font-family: 'Permanent Marker', cursive;
+}
+
+.bi-trash {
+    background: none;
+    border: none;
+    background: rgb(246, 246, 137);
+}
+
+.stickyLi{
+    width: 32%;
+}
