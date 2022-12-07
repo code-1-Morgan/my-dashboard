@@ -1,4 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Permanent+Marker);
+/* @import "/Users/Morgan/Desktop/RC/demo-day-project/node_modules/bulma/css/bulma.css"; */
+
 
 * {
 	box-sizing:border-box;
@@ -10,16 +12,10 @@
     border: 2px solid black;
 }
 
+.completedPostIt{
+    background: rgb(177, 235, 187);
+}
+
 .postitTitle{
     font-family: 'Permanent Marker', cursive;
-}
-
-.bi-trash {
-    background: none;
-    border: none;
-    background: rgb(246, 246, 137);
-}
-
-.stickyLi{
-    width: 32%;
 }

@@ -1,10 +1,12 @@
 const Post = require("../models/Post");
+const Schedule = require("../models/Schedule");
 
 module.exports = {
   getProfile: async (req, res) => {
     try {
       const posts = await Post.find({ user: req.user.id });
-      res.render("profile.ejs", { posts: posts, user: req.user });
+      const schedules = await Schedule.find().sort({ time: "asc"}).lean();
+      res.render("profile.ejs", { posts: posts, schedules: schedules, user: req.user });
     } catch (err) {
       console.log(err);
     }
@@ -35,7 +37,7 @@ module.exports = {
         // image: result.secure_url,
         // cloudinaryId: result.public_id,
         caption: req.body.caption,
-        // likes: 0,
+        likes: false,
         user: req.user.id,
       });
       console.log("Post has been added!");
@@ -49,11 +51,11 @@ module.exports = {
       await Post.findOneAndUpdate(
         { _id: req.params.id },
         {
-          $inc: { likes: 1 },
+          $set: { likes: true },
         }
       );
-      console.log("Likes +1");
-      res.redirect(`/post/${req.params.id}`);
+      console.log("Task completed");
+      res.redirect("/profile");
     } catch (err) {
       console.log(err);
     }
@@ -67,6 +69,20 @@ module.exports = {
       // Delete post from db
       await Post.remove({ _id: req.params.id });
       console.log("Deleted Post");
+      res.redirect("/profile");
+    } catch (err) {
+      res.redirect("/profile");
+    }
+  },
+  deleteSchedule: async (req, res) => {
+    try {
+      // Find schedule by id
+      let schedule = await Schedule.findById({ _id: req.params.id });
+      // Delete image from cloudinary
+      // await cloudinary.uploader.destroy(schedule.cloudinaryId);
+      // Delete schedule from db
+      await Schedule.remove({ _id: req.params.id });
+      console.log("Deleted Schedule");
       res.redirect("/profile");
     } catch (err) {
       res.redirect("/profile");

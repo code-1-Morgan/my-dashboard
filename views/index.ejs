@@ -1,12 +1,66 @@
-<%- include('partials/header') -%>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MyDashboard</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/imgs/favicon-32x32.png"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
 
-<main class="container">
-    <h2 class="text-center mt-5">Welcome to MyDashboard!</h2>
-    <div class="row justify-content-around mt-5">
-        <a href="/login" class="col-3 btn btn-primary"> Login</a>
-        <a href="/signup" class="col-3 btn btn-primary"> Signup</a>
-    </div>
-</main>
-    
 
-<%- include('partials/footer') -%>
+  <body>
+    <section class="hero is-primary is-fullheight">
+        <header class="hero-head">
+            <div class="navbar-brand">
+                <div class="navbar-item">
+                    <h1 class="title"><a href="/profile">
+                        <i class="bi bi-clock"> </i>
+                        <img 
+                        src="https://res.cloudinary.com/dynnqi8zy/image/upload/v1670281326/myDashboardLogo_1_kncq8z.png"
+                        >
+                      </a></h1>
+                </div>
+            </div>
+        </header>
+
+        <main class="hero-body">
+            <div class="container has-text-centered">
+                <h2 class="title is-1">Welcome to MyDashboard!</h2>
+                <p class="subtitle">Your life: optimized</p>
+                <div>
+                    <a href="/login" class="col-3 button is-primary is-light"> Login</a>
+                    <a href="/signup" class="col-3 button is-primary is-light"> Signup</a>
+                </div>
+            </div>
+        </main>
+
+        <footer class="hero-foot">
+            <div class="container">
+                <span>(c) 2022 Morgan Downing. All rights reserved.</span>
+            </div>
+        </footer>
+    </section>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    </body>
+</html>
