@@ -12,7 +12,6 @@ const mainRoutes = require("./routes/main");
 const postRoutes = require("./routes/posts");
 const scheduleRoutes = require("./routes/schedules");
 
-const app = express()
 const PORT = process.env.PORT || 3000
 
 const connectDB = async () => {
@@ -35,6 +34,7 @@ connectDB().then(() => {
     app.listen(PORT, () => {
         console.log("listening for requests");
     })
+})
 
 //Use .env file in config folder
 require("dotenv").config({ path: "./config/.env" });
