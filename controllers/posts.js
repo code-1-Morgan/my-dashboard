@@ -74,18 +74,5 @@ module.exports = {
       res.redirect("/profile");
     }
   },
-  deleteSchedule: async (req, res) => {
-    try {
-      // Find schedule by id
-      let schedule = await Schedule.findById({ _id: req.params.id });
-      // Delete image from cloudinary
-      // await cloudinary.uploader.destroy(schedule.cloudinaryId);
-      // Delete schedule from db
-      await Schedule.remove({ _id: req.params.id });
-      console.log("Deleted Schedule");
-      res.redirect("/profile");
-    } catch (err) {
-      res.redirect("/profile");
-    }
-  },
+
 };
