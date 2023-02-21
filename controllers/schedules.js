@@ -26,7 +26,7 @@ module.exports = {
               user: req.user.id
           });
           console.log("Schedule has been added!");
-          res.redirect(`/profile`);
+          res.redirect("/profile");
       } catch (err) {
           console.log(err);
       }

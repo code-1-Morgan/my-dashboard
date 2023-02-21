@@ -58,7 +58,45 @@
         </nav>
       </header>
       <main class="hero-body columns is-align-items-flex-start pt-5 has-background-light">
-        <div class="column is-6">
+        <div class="column is-5 ml-6 has-background-primary-light	box p-6">
+          <div class="columns">
+            <div class="column is-12">
+              <h3 class="title has-text-black">Today's Schedule</h3>
+              <div class="columns">
+                <div class="column">
+                  <form action="/schedule/createSchedule" method="POST">
+                    <input type="text" name="event" placeholder="Event name">
+                    <input type="time" name="time">
+                    
+                    <button class="button is-primary" type="submit">Add</button>
+                  </form>
+                    <!-- display schedule -->
+                  <ul class="list-unstyled has-text-dark columns flex-wrap">
+                    <%_ if(typeof schedules !== "undefined"){ _%>
+                      <% for(var n=0; n<schedules.length; n++) {%>
+                        <li class="justify-content-between mt-5 column is-12">
+                          <div class="columns is-align-items-center	">
+                            <div class="column is-8 is-size-4 has-text-primary has-text-weight-bold	">
+                              <%= schedules[n].time %> - <%= schedules[n].event %>
+                            </div>
+                            <form
+                            action="/schedule/deleteSchedule/<%= schedules[n].id %>?_method=DELETE"
+                            method="POST"
+                            >
+                              <button class="bi bi-trash button is-small is-danger is-light" type="submit"></button>
+                            </form>
+                          </div>
+                        </li>
+                      <% } %>
+                    <%_ } _%>
+                  </ul> 
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="column is-6 ml-6">
           <div class="columns">
             <div class="column is-12">
               <h2 class="title has-text-black">Tasks</h2>
@@ -137,46 +175,6 @@
           </div>
         </div>
 
-        <div class="column is-5 ml-6 has-background-primary-light	box p-6">
-          <div class="columns">
-            <div class="column is-12">
-              <h3 class="title has-text-black">Today's Schedule</h3>
-              <div class="columns">
-                <div class="column">
-                  <form action="/schedule/createSchedule" method="POST">
-                    <input type="text" name="event" placeholder="Event name">
-                    <input type="time" name="time">
-                    
-                    <button class="button is-primary" type="submit">Add</button>
-                  </form>
-                    <!-- display schedule -->
-                  <ul class="list-unstyled has-text-dark columns flex-wrap">
-                    <%_ if(typeof schedules !== "undefined"){ _%>
-                      <% for(var n=0; n<schedules.length; n++) {%>
-                        <li class="justify-content-between mt-5 column is-12">
-                          <div class="columns is-align-items-center	">
-                            <div class="column is-8 is-size-4 has-text-primary has-text-weight-bold	">
-                              <%= schedules[n].time %> - <%= schedules[n].event %>
-                            </div>
-                            <form
-                            action="/schedule/deleteSchedule/<%= schedules[n].id %>?_method=DELETE"
-                            method="POST"
-                            >
-                              <button class="bi bi-trash button is-small is-danger is-light" type="submit"></button>
-                            </form>
-                          </div>
-                        </li>
-                      <% } %>
-                    <%_ } _%>
-                  </ul> 
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        </div>
-        
-        
       </main>
       <footer class="hero-foot ml-2 is-size-7">
             <span>(c) 2022 Morgan Downing. All rights reserved.</span>
